@@ -1,0 +1,21 @@
+.header{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.header__image{
+    width: 48px;
+    margin-right: 10px;
+}
+
+.header__title {
+    margin-left: 12px;
+}
+
+.header__input{
+    outline: none;
+    border: black 1px solid;
+    border-radius: 5px;
+}
+

@@ -1,0 +1,12 @@
+.character-card{
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+    border: black 2px solid;
+    margin: 20px;
+    border-radius: 12px;
+}
+
+.character-card__image{
+    width: 100%;
+}

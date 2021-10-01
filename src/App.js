@@ -1,25 +1,36 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from "./components/Header";
+import CharacterGallery from "./components/CharacterGallery"
+import {useEffect, useState} from "react";
+import {fetchData} from "./service/api-service";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+    const [characters, setCharacters] = useState([])
+    const [search, setSearch] = useState("")
+
+    useEffect(() => {
+        console.log("useEffect")
+        fetchData()
+            .then(characters => setCharacters(characters))
+            .catch(error => console.log(error))
+    },[])
+
+    const handleInput = event => {
+        setSearch(event.target.value)
+    }
+
+    const filteredCharacters = characters.filter(
+        character => character.name.toLowerCase().includes(search.toLowerCase())
+    )
+
+    return (
+    <div>
+        <Header onChange={handleInput} value={search}/>
+        <CharacterGallery characters={filteredCharacters}/>
     </div>
-  );
+    );
 }
 
 export default App;
